@@ -534,6 +534,35 @@ prod-acme-BackupDestinationStack  <span style="color:var(--ochre)"># us-west-2</
       </article>
 
       <article class="case">
+        <div class="meta"><span class="sector"><span class="en">Event-driven · serverless</span><span class="es">Orientada a eventos · serverless</span></span><span class="mono" style="color:var(--muted)">2025 – 2026</span><span class="mono" style="color:var(--teal)">CDK · TypeScript</span></div>
+        <div>
+          <h3><span class="en">Event-driven backbone with failure isolation and log analytics</span><span class="es">Columna vertebral orientada a eventos, con aislamiento de fallos y analítica de logs</span></h3>
+          <p class="ctx en">A platform mixing a monolith and microservices on ECS needed asynchronous work (notifications, long-running tasks) that would not take the system down when one message failed, plus a cheap way to investigate security traffic.</p>
+          <p class="ctx es">Una plataforma que combinaba un monolito y microservicios en ECS necesitaba trabajo asíncrono (notificaciones, tareas largas) que no tumbara el sistema cuando un mensaje fallaba, y una forma económica de investigar el tráfico de seguridad.</p>
+          <ul class="en">
+            <li>CloudFront and WAF in front of both API Gateway and the ECS monolith; behind the API, EventBridge routes events to microservices, Step Functions orchestrates multi-step tasks and SQS buffers notifications.</li>
+            <li>Malformed SMS messages were retried endlessly and saturated the SMS gateways. I added a dead-letter queue in CDK (3 receives, 14-day retention, alerts), which isolated poison messages and kept notifications flowing.</li>
+            <li>WAF logs land in an encrypted, private S3 bucket and are queried with Athena using partition projection, so new hourly partitions need no <code class="mono">MSCK REPAIR</code>. Investigations such as "top blocked IPs by country this week" went from minutes to seconds and scan far less data.</li>
+          </ul>
+          <ul class="es">
+            <li>CloudFront y WAF delante de API Gateway y del monolito en ECS; detrás de la API, EventBridge enruta eventos a microservicios, Step Functions orquesta tareas de varios pasos y SQS amortigua las notificaciones.</li>
+            <li>Los mensajes SMS defectuosos se reintentaban sin fin y saturaban las pasarelas de SMS. Agregué una dead-letter queue en CDK (3 recepciones, 14 días de retención, alertas), que aisló los mensajes envenenados y mantuvo fluyendo las notificaciones.</li>
+            <li>Los logs de WAF llegan a un bucket S3 privado y cifrado, y se consultan con Athena usando partition projection, así las particiones por hora no necesitan <code class="mono">MSCK REPAIR</code>. Investigaciones como "IPs más bloqueadas por país esta semana" pasaron de minutos a segundos y escanean mucho menos datos.</li>
+          </ul>
+          <div class="stats">
+            <span class="stat"><b><span class="en">min → s</span><span class="es">min → s</span></b><span class="en">security log queries</span><span class="es">consultas de logs de seguridad</span></span>
+            <span class="stat"><b>0</b><span class="en">retry loops after the DLQ</span><span class="es">bucles de reintento tras la DLQ</span></span>
+          </div>
+          <pre class="mono" style="margin:16px 0 0;padding:14px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;overflow-x:auto;line-height:1.6;color:var(--muted)"><span style="color:var(--ink)">const</span> dlq = <span style="color:var(--ink)">new</span> sqs.Queue(this, 'NotificationDLQ', { retentionPeriod: Duration.days(14) });
+<span style="color:var(--ink)">const</span> queue = <span style="color:var(--ink)">new</span> sqs.Queue(this, 'NotificationMainQueue', {
+  visibilityTimeout: Duration.seconds(300),
+  deadLetterQueue: { queue: dlq, maxReceiveCount: 3 },   <span style="color:var(--ochre)">// poison messages stop here</span>
+});</pre>
+          <div class="stack">AWS CDK (TypeScript) · SQS + DLQ · Step Functions · EventBridge · API Gateway · ECS · CloudFront · WAF · S3 · Athena</div>
+        </div>
+      </article>
+
+      <article class="case">
         <div class="meta"><span class="sector"><span class="en">Security · all accounts</span><span class="es">Seguridad · todas las cuentas</span></span><span class="mono" style="color:var(--muted)">2024 – 2026</span></div>
         <div>
           <h3><span class="en">Security posture across client accounts</span><span class="es">Postura de seguridad en cuentas de clientes</span></h3>
