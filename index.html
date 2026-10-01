@@ -1,0 +1,756 @@
+<!doctype html>
+<html lang="en" data-lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Catalina Farez · Cloud Architect AWS &amp; GCP</title>
+<meta name="description" content="Catalina Farez, Cloud Architect on AWS and Google Cloud. I design, migrate and secure cloud platforms and write the infrastructure as code. Available for freelance work.">
+<meta name="author" content="Catalina Farez">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Catalina Farez · Cloud Architect AWS &amp; GCP">
+<meta property="og:description" content="Catalina Farez, Cloud Architect on AWS and Google Cloud. I design, migrate and secure cloud platforms and write the infrastructure as code. Available for freelance work.">
+<meta property="og:url" content="https://cfarez19.github.io/">
+<meta property="og:image" content="https://cfarez19.github.io/arquitectura-cloud-native.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="canonical" href="https://cfarez19.github.io/">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2315201C'/%3E%3Ctext x='32' y='42' font-family='Arial' font-weight='700' font-size='26' text-anchor='middle' fill='%234FC1A8'%3ECF%3C/text%3E%3C/svg%3E">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+html{color-scheme:light}
+body{margin:0;-webkit-font-smoothing:antialiased}
+img{max-width:100%}
+[hidden]{display:none!important}
+</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;700;800&family=JetBrains+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: a single-column "stack sheet" — each section reads like a documented resource block, with mono metadata on the left rail at wide widths */
+:root{
+  --paper:#EDF0EE; --sheet:#F7F8F6; --ink:#15201C; --muted:#56635E; --line:#CBD3CF;
+  --teal:#0D6B5B; --teal-soft:#D5E7E1; --ochre:#B7791A; --ochre-soft:#F1E3C8;
+  --display:"Schibsted Grotesk", "Helvetica Neue", Arial, sans-serif;
+  --mono:"JetBrains Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#101614; --sheet:#161E1B; --ink:#E4EBE8; --muted:#97A59F; --line:#2B3833;
+  --teal:#4FC1A8; --teal-soft:#173A32; --ochre:#E0A94A; --ochre-soft:#3A2E17; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --paper:#101614; --sheet:#161E1B; --ink:#E4EBE8; --muted:#97A59F; --line:#2B3833;
+  --teal:#4FC1A8; --teal-soft:#173A32; --ochre:#E0A94A; --ochre-soft:#3A2E17; color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--paper);color:var(--ink);font-family:var(--display);font-size:16px;line-height:1.6;padding:0 20px}
+.wrap{max-width:1040px;margin:0 auto;padding-block:28px 64px}
+h1,h2,h3{text-wrap:balance;line-height:1.15;margin:0}
+p{margin:0}
+a{color:var(--teal)}
+:focus-visible{outline:2px solid var(--ochre);outline-offset:2px}
+.mono{font-family:var(--mono);font-size:12.5px;letter-spacing:.02em}
+.eyebrow{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+
+/* language */
+:root:not([data-lang="es"]) .es, :root[data-lang="es"] .en{display:none!important}
+
+/* top bar */
+.top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.lang{display:inline-flex;border:1px solid var(--line);border-radius:6px;overflow:hidden}
+.lang button{font:500 12px var(--mono);background:transparent;color:var(--muted);border:0;padding:6px 12px;cursor:pointer}
+.lang button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
+
+/* hero */
+.hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:40px;padding-block:48px 40px;align-items:end}
+.hero h1{font-size:clamp(38px,6vw,64px);font-weight:800;letter-spacing:-.025em}
+.hero h1 span.role{display:block;color:var(--teal)}
+.hero .lede{margin-top:20px;font-size:19px;max-width:34em;color:var(--ink)}
+.avail{margin-top:22px;display:flex;gap:8px;flex-wrap:wrap}
+.chip{font:500 12px var(--mono);padding:5px 10px;border-radius:999px;border:1px solid var(--line);background:var(--sheet);color:var(--ink)}
+.chip.live{border-color:var(--teal);color:var(--teal)}
+.chip.live::before{content:"";display:inline-block;width:7px;height:7px;border-radius:50%;background:var(--teal);margin-right:7px;vertical-align:1px}
+
+.spec{background:var(--sheet);border:1px solid var(--line);border-radius:8px;font-family:var(--mono);font-size:13px;overflow:hidden}
+.spec .hd{padding:10px 14px;border-bottom:1px solid var(--line);color:var(--muted);font-size:12px}
+.spec dl{margin:0;display:grid;grid-template-columns:auto 1fr}
+.spec dt,.spec dd{margin:0;padding:8px 14px;border-bottom:1px dashed var(--line)}
+.spec dt{color:var(--muted)}
+.spec dd{text-align:right;font-variant-numeric:tabular-nums;color:var(--ink);font-weight:500}
+.spec dl>*:nth-last-child(-n+2){border-bottom:0}
+
+/* sections */
+section{padding-block:44px;border-top:1px solid var(--line)}
+.sec-head{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;margin-bottom:28px}
+.sec-head h2{font-size:clamp(26px,3.4vw,34px);font-weight:700;letter-spacing:-.015em}
+.sec-head p{margin-top:10px;color:var(--muted);max-width:40em}
+.body-col{margin-left:224px}
+
+/* services */
+.services{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1px;background:var(--line);border:1px solid var(--line);border-radius:8px;overflow:hidden}
+.svc{background:var(--sheet);padding:22px 20px;display:flex;flex-direction:column;gap:10px;min-width:0}
+.svc h3{font-size:18px;font-weight:700}
+.svc p{color:var(--muted);font-size:15px}
+.svc .tags{margin-top:auto;padding-top:6px;font-family:var(--mono);font-size:11.5px;color:var(--teal)}
+
+/* diagram */
+.diagram{background:var(--sheet);border:1px solid var(--line);border-radius:8px;padding:18px;overflow-x:auto}
+.diagram svg{display:block;width:100%;min-width:640px;height:auto}
+.diagram svg text{font-family:var(--mono);fill:var(--ink)}
+.cap{margin-top:12px;color:var(--muted);font-size:14px;max-width:48em}
+
+/* cases */
+.cases{display:grid;gap:18px}
+.case{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;padding:24px 0;border-top:1px dashed var(--line)}
+.case:first-child{border-top:0;padding-top:0}
+.case>div{min-width:0}
+.case .meta{display:flex;flex-direction:column;gap:6px}
+.case .sector{font:500 12px var(--mono);color:var(--ochre);text-transform:uppercase;letter-spacing:.06em}
+.case h3{font-size:21px;font-weight:700}
+.case .ctx{margin-top:8px;color:var(--muted);max-width:44em}
+.case ul{margin:14px 0 0;padding-left:18px;display:grid;gap:6px;max-width:48em}
+.case li::marker{color:var(--teal)}
+.stats{display:flex;flex-wrap:wrap;gap:10px;margin-top:16px}
+.stat{background:var(--teal-soft);border-radius:6px;padding:8px 12px;font-family:var(--mono);font-size:12.5px;color:var(--ink)}
+.stat b{font-weight:500;color:var(--teal);font-size:15px;margin-right:6px;font-variant-numeric:tabular-nums}
+.stack{margin-top:14px;font-family:var(--mono);font-size:12px;color:var(--muted)}
+
+.repo{display:inline-block;margin-top:14px;padding:9px 14px;border-radius:6px;background:var(--ink);color:var(--paper);text-decoration:none;font:500 13px var(--mono)}
+.repo:hover{background:var(--teal)}
+.mini{margin:0;padding-left:16px;display:grid;gap:6px;font-size:14.5px;color:var(--muted)}
+.mini li::marker{color:var(--teal)}
+.repos{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.repocard{display:flex;flex-direction:column;gap:8px;padding:18px;border:1px solid var(--line);border-radius:8px;background:var(--sheet);color:var(--ink);text-decoration:none;min-width:0}
+.repocard:hover{border-color:var(--teal)}
+.repocard b{font-size:17px}
+.rc-path{color:var(--teal);overflow-wrap:anywhere}
+.rc-desc{font-size:14.5px;color:var(--muted)}
+.rc-meta{margin-top:auto;color:var(--muted)}
+@media (max-width:820px){.repos{grid-template-columns:1fr}}
+/* IaC inventory */
+.inv{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:28px}
+.bars{display:grid;gap:9px}
+.bar{display:grid;grid-template-columns:minmax(0,220px) minmax(0,1fr) 40px;gap:12px;align-items:center;font-family:var(--mono);font-size:12.5px}
+.bar .lbl{color:var(--ink);overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.bar .trk{height:10px;background:var(--line);border-radius:2px;overflow:hidden}
+.bar .fill{height:100%;background:var(--teal);border-radius:2px}
+.bar .n{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+.envs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px;align-content:start}
+.env{border:1px solid var(--line);border-radius:8px;padding:14px;background:var(--sheet)}
+.env .k{font:500 11.5px var(--mono);color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+.env .v{font-size:30px;font-weight:800;font-variant-numeric:tabular-nums;margin-top:2px}
+.env .d{font-size:13px;color:var(--muted)}
+.note{margin-top:18px;padding:12px 14px;border-left:3px solid var(--ochre);background:var(--ochre-soft);font-size:14px;border-radius:0 6px 6px 0;max-width:52em}
+
+/* timeline */
+.tl{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.tl li{display:grid;grid-template-columns:200px minmax(0,1fr);gap:24px;padding:14px 0;border-top:1px dashed var(--line)}
+.tl li:first-child{border-top:0}
+.tl .when{font-family:var(--mono);font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.tl h3{font-size:17px;font-weight:700}
+.tl p{color:var(--muted);font-size:15px}
+
+.certs{display:flex;gap:12px;flex-wrap:wrap;margin-top:22px}
+.cert{border:1px solid var(--line);background:var(--sheet);border-radius:8px;padding:12px 16px;min-width:0}
+.cert b{display:block;font-size:15px}
+.cert span{font-family:var(--mono);font-size:12px;color:var(--muted)}
+
+.contact{background:var(--ink);color:var(--paper);border-radius:10px;padding:32px;display:grid;grid-template-columns:minmax(0,1.3fr) minmax(0,1fr);gap:28px;align-items:center}
+.contact h2{font-size:clamp(24px,3vw,32px);font-weight:800}
+.contact p{margin-top:10px;opacity:.8}
+.contact ul{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-family:var(--mono);font-size:13px}
+.contact li{border-bottom:1px solid color-mix(in srgb,var(--paper) 20%,transparent);padding-bottom:8px}
+footer{margin-top:28px;color:var(--muted);font-family:var(--mono);font-size:12px}
+
+@media (max-width:820px){
+  .hero{grid-template-columns:1fr;gap:28px;padding-top:32px}
+  .sec-head,.case,.tl li{grid-template-columns:minmax(0,1fr);gap:8px}
+  .body-col{margin-left:0}
+  .services{grid-template-columns:1fr}
+  .inv{grid-template-columns:1fr}
+  .contact{grid-template-columns:1fr;padding:24px}
+}
+@media (max-width:480px){ .bar{grid-template-columns:minmax(0,130px) minmax(0,1fr) 34px} }
+@media (prefers-reduced-motion:no-preference){ .fill{transition:width .6s ease} }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <span class="eyebrow">cf · cloud-architecture · aws / gcp</span>
+    <div class="lang" role="group" aria-label="Language">
+      <button id="btn-en" type="button" data-set="en" aria-pressed="true">EN</button>
+      <button id="btn-es" type="button" data-set="es" aria-pressed="false">ES</button>
+    </div>
+  </div>
+
+  <header class="hero">
+    <div>
+      <h1>Catalina Farez <span class="role">AWS &amp; GCP Cloud Architect</span></h1>
+      <p class="lede en">I design, migrate and secure cloud platforms on AWS and Google Cloud for fintech, insurance and e-commerce teams, and I write the infrastructure as code so every environment can be rebuilt the same way.</p>
+      <p class="lede es">Diseño, migro y aseguro plataformas cloud en AWS y Google Cloud para equipos fintech, de seguros y e-commerce, y escribo la infraestructura como código para que cada ambiente se pueda reconstruir igual.</p>
+      <div class="avail">
+        <span class="chip live"><span class="en">Open to freelance</span><span class="es">Disponible para freelance</span></span>
+        <span class="chip">AWS · GCP</span>
+        <span class="chip">Remote · UTC−5</span>
+        <span class="chip">English · Español</span>
+      </div>
+    </div>
+    <aside class="spec" aria-label="Summary">
+      <div class="hd">Outputs:</div>
+      <dl>
+        <dt><span class="en">Years in software</span><span class="es">Años en software</span></dt><dd>7</dd>
+        <dt><span class="en">CloudFormation templates</span><span class="es">Plantillas CloudFormation</span></dt><dd>50+</dd>
+        <dt><span class="en">CDK apps · client branches</span><span class="es">Apps CDK · ramas por cliente</span></dt><dd>3 · 20+</dd>
+        <dt><span class="en">Public architecture repos</span><span class="es">Repos públicos de arquitectura</span></dt><dd>3 repos</dd>
+        <dt><span class="en">Client organizations</span><span class="es">Organizaciones cliente</span></dt><dd>14</dd>
+        <dt><span class="en">Countries served</span><span class="es">Países atendidos</span></dt><dd>3</dd>
+        <dt><span class="en">Environments</span><span class="es">Ambientes</span></dt><dd>Dev · QA · UAT · Prod</dd>
+        <dt><span class="en">Clouds</span><span class="es">Nubes</span></dt><dd>AWS · GCP</dd>
+        <dt>AWS Certified</dt><dd>SAA · CCP</dd>
+      </dl>
+    </aside>
+  </header>
+
+  <!-- SERVICES -->
+  <section id="services">
+    <div class="sec-head">
+      <span class="eyebrow"><span class="en">What I can do for you</span><span class="es">Qué puedo hacer por ti</span></span>
+      <div>
+        <h2><span class="en">Services</span><span class="es">Servicios</span></h2>
+        <p class="en">Scoped engagements that end with working infrastructure and the documentation your team needs to own it.</p>
+        <p class="es">Proyectos acotados que terminan con infraestructura funcionando y la documentación que tu equipo necesita para operarla.</p>
+      </div>
+    </div>
+    <div class="services">
+      <div class="svc">
+        <h3><span class="en">Infrastructure as Code</span><span class="es">Infraestructura como código</span></h3>
+        <p class="en">VPCs, load balancers, compute and databases defined in reusable, parameterized templates for every environment.</p>
+        <p class="es">VPCs, balanceadores, cómputo y bases de datos en plantillas parametrizadas y reutilizables para cada ambiente.</p>
+        <div class="tags">CloudFormation · CDK/TypeScript · Terraform</div>
+      </div>
+      <div class="svc">
+        <h3><span class="en">Container migrations</span><span class="es">Migración a contenedores</span></h3>
+        <p class="en">Move legacy PHP and Node apps from Elastic Beanstalk or EC2 to ECS Fargate, with autoscaling and a clean cut-over.</p>
+        <p class="es">Paso de apps PHP y Node desde Elastic Beanstalk o EC2 a ECS Fargate, con autoscaling y un corte limpio.</p>
+        <div class="tags">Docker · ECR · ECS Fargate · ALB</div>
+      </div>
+      <div class="svc">
+        <h3><span class="en">Security hardening</span><span class="es">Hardening de seguridad</span></h3>
+        <p class="en">WAF rules, least-privilege IAM, MFA, and replacing static access keys with OIDC roles in your pipelines.</p>
+        <p class="es">Reglas WAF, IAM de mínimo privilegio, MFA y reemplazo de access keys por roles OIDC en tus pipelines.</p>
+        <div class="tags">WAF · Security Hub · GuardDuty · IAM</div>
+      </div>
+      <div class="svc">
+        <h3><span class="en">Cost optimization</span><span class="es">Optimización de costos</span></h3>
+        <p class="en">Cost scenarios before you change anything on AWS or GCP, right-sizing, Savings Plans and Committed Use Discounts, and removing idle or duplicate resources.</p>
+        <p class="es">Escenarios de costo antes de cambiar nada en AWS o GCP, right-sizing, Savings Plans y Committed Use Discounts, y retiro de recursos inactivos o duplicados.</p>
+        <div class="tags">AWS Savings Plans · GCP Recommender · CUDs · Rightsizing</div>
+      </div>
+      <div class="svc">
+        <h3><span class="en">Databases on AWS</span><span class="es">Bases de datos en AWS</span></h3>
+        <p class="en">DocumentDB, MongoDB and RDS PostgreSQL: sizing, roles, backups, private connectivity and migrations.</p>
+        <p class="es">DocumentDB, MongoDB y RDS PostgreSQL: sizing, roles, respaldos, conectividad privada y migraciones.</p>
+        <div class="tags">DocumentDB 5.0 · RDS · MongoDB Atlas</div>
+      </div>
+      <div class="svc">
+        <h3><span class="en">Architecture documentation</span><span class="es">Documentación de arquitectura</span></h3>
+        <p class="en">As-is reviews against the Well-Architected Framework, diagrams, inventories, runbooks and handovers.</p>
+        <p class="es">Revisiones As-Is con el Well-Architected Framework, diagramas, inventarios, runbooks y handovers.</p>
+        <div class="tags">Well-Architected · Mermaid · Runbooks</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REFERENCE ARCHITECTURE -->
+  <section id="architecture">
+    <div class="sec-head">
+      <span class="eyebrow"><span class="en">Reference architecture</span><span class="es">Arquitectura de referencia</span></span>
+      <div>
+        <h2><span class="en">The pattern behind most of my stacks</span><span class="es">El patrón detrás de la mayoría de mis stacks</span></h2>
+        <p class="en">Two Availability Zones, one shared Application Load Balancer routing by host name, workloads in private subnets, and data in its own VPC.</p>
+        <p class="es">Dos zonas de disponibilidad, un Application Load Balancer compartido que enruta por host, cargas en subredes privadas y datos en su propia VPC.</p>
+      </div>
+    </div>
+    <div class="diagram">
+      <svg viewBox="0 0 900 430" role="img" aria-label="AWS reference architecture diagram">
+        <defs>
+          <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--muted)"/></marker>
+        </defs>
+        <!-- users -->
+        <rect x="14" y="180" width="96" height="56" rx="6" style="fill:var(--sheet);stroke:var(--ink)"/>
+        <text x="62" y="205" text-anchor="middle" font-size="12">Users</text>
+        <text x="62" y="222" text-anchor="middle" font-size="10" style="fill:var(--muted)">HTTPS</text>
+        <!-- WAF -->
+        <rect x="136" y="180" width="96" height="56" rx="6" style="fill:var(--ochre-soft);stroke:var(--ochre)"/>
+        <text x="184" y="205" text-anchor="middle" font-size="12">AWS WAF</text>
+        <text x="184" y="222" text-anchor="middle" font-size="10" style="fill:var(--muted)">rate · SQLi · IP</text>
+        <line x1="110" y1="208" x2="134" y2="208" style="stroke:var(--muted)" marker-end="url(#ar)"/>
+        <line x1="232" y1="208" x2="262" y2="208" style="stroke:var(--muted)" marker-end="url(#ar)"/>
+
+        <!-- App VPC -->
+        <rect x="264" y="14" width="400" height="402" rx="10" style="fill:none;stroke:var(--teal);stroke-width:1.5"/>
+        <text x="280" y="36" font-size="12" style="fill:var(--teal)">App VPC · 10.x.0.0/16</text>
+        <!-- AZ columns -->
+        <rect x="280" y="48" width="178" height="352" rx="8" style="fill:none;stroke:var(--line);stroke-dasharray:4 4"/>
+        <rect x="470" y="48" width="178" height="352" rx="8" style="fill:none;stroke:var(--line);stroke-dasharray:4 4"/>
+        <text x="292" y="66" font-size="10" style="fill:var(--muted)">AZ a</text>
+        <text x="482" y="66" font-size="10" style="fill:var(--muted)">AZ b</text>
+        <!-- public subnets -->
+        <rect x="290" y="76" width="158" height="110" rx="6" style="fill:var(--teal-soft);stroke:none"/>
+        <rect x="480" y="76" width="158" height="110" rx="6" style="fill:var(--teal-soft);stroke:none"/>
+        <text x="300" y="94" font-size="10" style="fill:var(--muted)">public subnet</text>
+        <text x="490" y="94" font-size="10" style="fill:var(--muted)">public subnet</text>
+        <!-- ALB spanning -->
+        <rect x="318" y="104" width="292" height="36" rx="6" style="fill:var(--sheet);stroke:var(--teal)"/>
+        <text x="464" y="126" text-anchor="middle" font-size="12">Shared ALB · host-based routing</text>
+        <rect x="300" y="150" width="70" height="26" rx="4" style="fill:var(--sheet);stroke:var(--line)"/>
+        <text x="335" y="167" text-anchor="middle" font-size="10">NAT GW</text>
+        <rect x="490" y="150" width="70" height="26" rx="4" style="fill:var(--sheet);stroke:var(--line)"/>
+        <text x="525" y="167" text-anchor="middle" font-size="10">NAT GW</text>
+        <line x1="262" y1="208" x2="318" y2="130" style="stroke:var(--muted)" marker-end="url(#ar)"/>
+        <!-- private subnets -->
+        <rect x="290" y="198" width="158" height="190" rx="6" style="fill:var(--paper);stroke:var(--line)"/>
+        <rect x="480" y="198" width="158" height="190" rx="6" style="fill:var(--paper);stroke:var(--line)"/>
+        <text x="300" y="216" font-size="10" style="fill:var(--muted)">private subnet</text>
+        <text x="490" y="216" font-size="10" style="fill:var(--muted)">private subnet</text>
+        <!-- services -->
+        <g font-size="11">
+          <rect x="300" y="226" width="138" height="34" rx="5" style="fill:var(--sheet);stroke:var(--ink)"/><text x="369" y="247" text-anchor="middle">frontend · Node 20</text>
+          <rect x="300" y="268" width="138" height="34" rx="5" style="fill:var(--sheet);stroke:var(--ink)"/><text x="369" y="289" text-anchor="middle">backoffice · PHP 8</text>
+          <rect x="300" y="310" width="138" height="34" rx="5" style="fill:var(--sheet);stroke:var(--ink)"/><text x="369" y="331" text-anchor="middle">middleware · PHP 7</text>
+          <rect x="490" y="226" width="138" height="34" rx="5" style="fill:var(--sheet);stroke:var(--ink)"/><text x="559" y="247" text-anchor="middle">frontend · replica</text>
+          <rect x="490" y="268" width="138" height="34" rx="5" style="fill:var(--sheet);stroke:var(--ink)"/><text x="559" y="289" text-anchor="middle">backoffice · replica</text>
+          <rect x="490" y="310" width="138" height="34" rx="5" style="fill:var(--sheet);stroke:var(--ink)"/><text x="559" y="331" text-anchor="middle">ECS Fargate worker</text>
+        </g>
+        <text x="464" y="372" text-anchor="middle" font-size="10" style="fill:var(--muted)">Elastic Beanstalk → ECS Fargate · autoscaling</text>
+        <line x1="464" y1="140" x2="464" y2="224" style="stroke:var(--muted);stroke-dasharray:3 3" marker-end="url(#ar)"/>
+
+        <!-- DB VPC -->
+        <rect x="700" y="130" width="186" height="190" rx="10" style="fill:none;stroke:var(--ochre);stroke-width:1.5"/>
+        <text x="714" y="152" font-size="12" style="fill:var(--ochre)">DB VPC · isolated</text>
+        <rect x="714" y="166" width="158" height="40" rx="5" style="fill:var(--sheet);stroke:var(--ink)"/>
+        <text x="793" y="184" text-anchor="middle" font-size="11">DocumentDB 5.0</text>
+        <text x="793" y="198" text-anchor="middle" font-size="9" style="fill:var(--muted)">KMS-encrypted</text>
+        <rect x="714" y="214" width="158" height="40" rx="5" style="fill:var(--sheet);stroke:var(--ink)"/>
+        <text x="793" y="232" text-anchor="middle" font-size="11">RDS PostgreSQL</text>
+        <text x="793" y="246" text-anchor="middle" font-size="9" style="fill:var(--muted)">Multi-AZ · PITR</text>
+        <rect x="714" y="262" width="158" height="40" rx="5" style="fill:var(--sheet);stroke:var(--ink)"/>
+        <text x="793" y="287" text-anchor="middle" font-size="11">ElastiCache Redis</text>
+        <line x1="648" y1="290" x2="698" y2="240" style="stroke:var(--muted)" marker-end="url(#ar)"/>
+        <text x="674" y="300" font-size="9" style="fill:var(--muted)">peering</text>
+
+        <!-- S3 -->
+        <rect x="714" y="346" width="158" height="40" rx="5" style="fill:var(--sheet);stroke:var(--line)"/>
+        <text x="793" y="370" text-anchor="middle" font-size="11">S3 · private buckets</text>
+      </svg>
+    </div>
+    <p class="cap en">The same pattern runs in Dev, QA, UAT and Prod, defined once as code and deployed per environment.</p>
+    <p class="cap es">El mismo patrón corre en Dev, QA, UAT y Prod, definido una vez como código y desplegado por ambiente.</p>
+  </section>
+
+  <!-- CASE STUDIES -->
+  <section id="work">
+    <div class="sec-head">
+      <span class="eyebrow"><span class="en">Selected work</span><span class="es">Trabajo seleccionado</span></span>
+      <div>
+        <h2><span class="en">Case studies</span><span class="es">Casos de estudio</span></h2>
+        <p class="en">Production work on AWS for financial and insurance clients, and on Google Cloud for a multi-project organization.</p>
+        <p class="es">Trabajo en producción en AWS para clientes financieros y de seguros, y en Google Cloud para una organización multi-proyecto.</p>
+      </div>
+    </div>
+    <div class="cases">
+
+      <article class="case">
+        <div class="meta"><span class="sector"><span class="en">Insurance · bancassurance</span><span class="es">Seguros · bancaseguros</span></span><span class="mono" style="color:var(--muted)">2026</span><span class="mono" style="color:var(--teal)">AWS CDK</span></div>
+        <div>
+          <h3><span class="en">One-click production platform in AWS CDK</span><span class="es">Plataforma de producción "one-click" en AWS CDK</span></h3>
+          <p class="ctx en">An insurer selling policies through a bank's channels needed a production environment that passes a bank's security review, and the same setup for Dev, QA and UAT. I wrote it as one CDK app: change a few values and the whole platform deploys.</p>
+          <p class="ctx es">Una aseguradora que vende pólizas por los canales de un banco necesitaba un ambiente productivo que pase la revisión de seguridad del banco, y el mismo esquema para Dev, QA y UAT. Lo escribí como una sola app CDK: cambias unos valores y se despliega toda la plataforma.</p>
+          <ul class="en">
+            <li>Network and data: app VPC and database VPC over peering, DocumentDB 5.0 encrypted with KMS, and separate database users for ECS and Lambda with secrets rotated every 30 days.</li>
+            <li>Compute: ECS Fargate services behind a public and an internal ALB, with autoscaling on CPU, memory and a day/night schedule, plus Container Insights.</li>
+            <li>Edge security: four WAF Web ACLs with 62 rules (CloudFront, public ALB, internal ALB, API) with AWS managed rule groups, Bot Control, anti-DDoS, geo blocking, host allow lists and IP sets.</li>
+            <li>API: HTTP API Gateway with a Lambda authorizer reaching the internal ALB over a VPC Link; CloudFront signs requests with a header secret so the API only accepts traffic from the CDN.</li>
+            <li>Resilience and audit: AWS Backup with daily, weekly and monthly rules (5-year retention) copied to a second region, S3 cross-region replication to Glacier, and CloudTrail data events on S3 and Lambda.</li>
+          </ul>
+          <ul class="es">
+            <li>Red y datos: VPC de aplicación y VPC de base de datos por peering, DocumentDB 5.0 cifrado con KMS y usuarios de base separados para ECS y Lambda con secretos rotados cada 30 días.</li>
+            <li>Cómputo: servicios ECS Fargate detrás de un ALB público y uno interno, con autoscaling por CPU, memoria y horario día/noche, más Container Insights.</li>
+            <li>Seguridad perimetral: cuatro Web ACL de WAF con 62 reglas (CloudFront, ALB público, ALB interno, API) con reglas administradas de AWS, Bot Control, anti-DDoS, bloqueo por país, hosts permitidos e IP sets.</li>
+            <li>API: HTTP API Gateway con autorizador Lambda que llega al ALB interno por VPC Link; CloudFront firma las peticiones con un header secreto para que la API solo acepte tráfico del CDN.</li>
+            <li>Resiliencia y auditoría: AWS Backup con reglas diaria, semanal y mensual (retención de 5 años) copiadas a otra región, replicación S3 cross-region a Glacier y CloudTrail con eventos de datos en S3 y Lambda.</li>
+          </ul>
+          <div class="stats">
+            <span class="stat"><b>14</b><span class="en">CDK stacks</span><span class="es">stacks CDK</span></span>
+            <span class="stat"><b>~200</b><span class="en">AWS resources</span><span class="es">recursos AWS</span></span>
+            <span class="stat"><b>~3.5k</b><span class="en">lines of CDK</span><span class="es">líneas de CDK</span></span>
+            <span class="stat"><b>62</b><span class="en">WAF rules</span><span class="es">reglas WAF</span></span>
+            <span class="stat"><b>9</b><span class="en">KMS keys</span><span class="es">llaves KMS</span></span>
+            <span class="stat"><b>2</b><span class="en">regions</span><span class="es">regiones</span></span>
+          </div>
+          <pre class="mono" style="margin:16px 0 0;padding:14px;background:var(--sheet);border:1px solid var(--line);border-radius:8px;overflow-x:auto;line-height:1.7;color:var(--muted)"><span style="color:var(--ink)">$ npx cdk ls -c config=prod</span>
+prod-acme-certificate          prod-acme-EcsStack
+prod-acme-vpcEnv               prod-acme-WafStack
+prod-acme-vpcDb                prod-acme-ApiGatewayStack
+prod-acme-peering              prod-acme-LambdaStack
+prod-acme-docdbDatabase        prod-acme-CloudTrailStack
+prod-acme-S3Buckets            prod-acme-BackupStack
+prod-acme-S3DestinationStack      <span style="color:var(--ochre)"># us-west-2</span>
+prod-acme-BackupDestinationStack  <span style="color:var(--ochre)"># us-west-2</span></pre>
+          <div class="stack">AWS CDK (JavaScript) · ECS Fargate · DocumentDB · WAFv2 · CloudFront · API Gateway · Lambda · AWS Backup · S3 CRR · KMS · Secrets Manager · CloudTrail</div>
+          <a class="repo" href="https://github.com/cfarez19/aws-cdk-secure-platform"><span class="en">View the code on GitHub</span><span class="es">Ver el código en GitHub</span> → cfarez19/aws-cdk-secure-platform</a>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="meta"><span class="sector"><span class="en">Google Cloud · multi-project org</span><span class="es">Google Cloud · organización multi-proyecto</span></span><span class="mono" style="color:var(--muted)">2026</span><span class="mono" style="color:var(--teal)">GCP</span></div>
+        <div>
+          <h3><span class="en">Organization-wide cost optimization on Google Cloud</span><span class="es">Optimización de costos de toda una organización en Google Cloud</span></h3>
+          <p class="ctx en">Cost recommendations were scattered across many projects, each visible only in its own console page, and managers had no way to see the total or prioritize it without GCP access.</p>
+          <p class="ctx es">Las recomendaciones de costo estaban dispersas en muchos proyectos, cada una visible solo en su propia consola, y los gerentes no tenían forma de ver el total ni priorizarlo sin acceso a GCP.</p>
+          <ul class="en">
+            <li>Analyzed three months of billing and found Compute Engine drove about 78% of spend, mostly oversized autoscaled GKE node pools running at low utilization.</li>
+            <li>Built a read-only Python toolkit: Cloud Asset Inventory discovers every project, the Recommender API is queried per project and zone, and the results become a self-contained HTML report managers open in any browser.</li>
+            <li>Covered VM and GKE node-pool rightsizing, idle VMs, unattached disks and unused external IPs, grouped by project and estimated monthly savings.</li>
+            <li>Executed 18 optimization actions and left a roadmap: flexible Committed Use Discounts, moving N1 machines to newer families, cutting inter-zone egress and reviewing licensing costs.</li>
+          </ul>
+          <ul class="es">
+            <li>Analicé tres meses de facturación y encontré que Compute Engine representaba cerca del 78% del gasto, sobre todo por node pools de GKE sobredimensionados con baja utilización.</li>
+            <li>Construí un toolkit en Python de solo lectura: Cloud Asset Inventory descubre cada proyecto, se consulta la Recommender API por proyecto y zona, y los resultados se convierten en un reporte HTML autocontenido que los gerentes abren en cualquier navegador.</li>
+            <li>Cubre rightsizing de VMs y node pools de GKE, VMs inactivas, discos sin usar e IPs externas sin uso, agrupados por proyecto y ahorro mensual estimado.</li>
+            <li>Ejecuté 18 acciones de optimización y dejé un roadmap: Committed Use Discounts flexibles, migrar máquinas N1 a familias nuevas, reducir el tráfico entre zonas y revisar costos de licencias.</li>
+          </ul>
+          <div class="stats">
+            <span class="stat"><b>~78%</b><span class="en">of spend traced to Compute Engine</span><span class="es">del gasto en Compute Engine</span></span>
+            <span class="stat"><b>18</b><span class="en">actions executed</span><span class="es">acciones ejecutadas</span></span>
+            <span class="stat"><b>5</b><span class="en">recommender types</span><span class="es">tipos de recomendación</span></span>
+          </div>
+          <p class="ctx en" style="margin-top:14px"><b style="color:var(--ink)">What I learned the hard way:</b> GKE node pools use a different recommender than standalone VMs, so querying only the VM recommender hides the biggest cost driver; and the Recommender API returns an empty list both for "no findings" and "no permission", so verbose logging is the only way to tell them apart.</p>
+          <p class="ctx es" style="margin-top:14px"><b style="color:var(--ink)">Lo que aprendí en la práctica:</b> los node pools de GKE usan un recommender distinto al de las VMs, así que consultar solo el de VMs oculta el mayor generador de costo; y la Recommender API devuelve una lista vacía tanto si no hay hallazgos como si faltan permisos, por lo que solo un log detallado permite distinguirlos.</p>
+          <div class="stack">Python · gcloud · Cloud Asset Inventory · Recommender API · Cloud Billing · Compute Engine · GKE</div>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="meta"><span class="sector"><span class="en">Insurance · 3 countries</span><span class="es">Seguros · 3 países</span></span><span class="mono" style="color:var(--muted)">2024 – 2026</span></div>
+        <div>
+          <h3><span class="en">Multi-country insurance platform on AWS</span><span class="es">Plataforma de seguros multi-país en AWS</span></h3>
+          <p class="ctx en">A global insurer ran quoting, renewals and back-office apps for Ecuador, Mexico and Puerto Rico. Each country needed its own Dev, QA, UAT and Prod environments.</p>
+          <p class="ctx es">Una aseguradora global operaba cotización, renovaciones y backoffice para Ecuador, México y Puerto Rico. Cada país necesitaba sus propios ambientes Dev, QA, UAT y Prod.</p>
+          <ul class="en">
+            <li>Wrote parameterized CloudFormation stacks that build the VPC, subnets across two AZs, a shared ALB and every app environment.</li>
+            <li>Routed a dozen subdomains (middleware, back-office, renewals) through one load balancer with host-based rules to keep cost down.</li>
+            <li>Ran PHP 7, PHP 8 and Node 20 workloads side by side and moved the middleware to ECS Fargate.</li>
+            <li>Grew production database storage before it filled and planned moving historical logs out of the database.</li>
+          </ul>
+          <ul class="es">
+            <li>Escribí stacks CloudFormation parametrizados que crean la VPC, subredes en dos AZ, un ALB compartido y cada ambiente de aplicación.</li>
+            <li>Enruté una docena de subdominios (middleware, backoffice, renovaciones) por un solo balanceador con reglas por host para bajar costos.</li>
+            <li>Operé cargas PHP 7, PHP 8 y Node 20 en paralelo y migré el middleware a ECS Fargate.</li>
+            <li>Amplié el almacenamiento de la base productiva antes de llenarse y planifiqué sacar los históricos de la base.</li>
+          </ul>
+          <div class="stats">
+            <span class="stat"><b>12</b><span class="en">environments</span><span class="es">ambientes</span></span>
+            <span class="stat"><b>90→81%</b><span class="en">DB storage used</span><span class="es">uso de almacenamiento</span></span>
+            <span class="stat"><b>1</b><span class="en">shared ALB per env</span><span class="es">ALB compartido por ambiente</span></span>
+          </div>
+          <div class="stack">CloudFormation · Elastic Beanstalk · ECS Fargate · ALB · ACM · S3 · WAF</div>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="meta"><span class="sector"><span class="en">Fintech + insurance · 15 envs</span><span class="es">Fintech + seguros · 15 ambientes</span></span><span class="mono" style="color:var(--muted)">2025 – 2026</span><span class="mono" style="color:var(--teal)">AWS CDK</span></div>
+        <div>
+          <h3><span class="en">One ECS template for 15 client environments</span><span class="es">Una plantilla ECS para 15 ambientes de clientes</span></h3>
+          <p class="ctx en">Amazon Linux 2 platforms on Elastic Beanstalk were reaching end of support, and every client had a different mix of PHP 7, PHP 8 and Node apps. Rebuilding each environment by hand was not an option.</p>
+          <p class="ctx es">Las plataformas Amazon Linux 2 de Elastic Beanstalk llegaban al fin de soporte, y cada cliente tenía una mezcla distinta de apps PHP 7, PHP 8 y Node. Reconstruir cada ambiente a mano no era opción.</p>
+          <ul class="en">
+            <li>Wrote one CDK app where each client is a short list of services: name, public or internal ALB, subdomain, CPU, memory and health check.</li>
+            <li>Deployed into each client's existing VPC with a lookup, so apps moved to Fargate without re-addressing networks.</li>
+            <li>Each service gets its own KMS-encrypted ECR repository, log group, target group and host-based routing rule; an HTTP API Gateway reaches internal services over a VPC Link.</li>
+          </ul>
+          <ul class="es">
+            <li>Escribí una sola app CDK donde cada cliente es una lista corta de servicios: nombre, ALB público o interno, subdominio, CPU, memoria y health check.</li>
+            <li>Desplegué en la VPC existente de cada cliente con un lookup, así las apps pasaron a Fargate sin rediseñar redes.</li>
+            <li>Cada servicio tiene su propio repositorio ECR cifrado con KMS, log group, target group y regla de ruteo por host; un HTTP API Gateway llega a los servicios internos por VPC Link.</li>
+          </ul>
+          <div class="stats">
+            <span class="stat"><b>15</b><span class="en">client environments</span><span class="es">ambientes de clientes</span></span>
+            <span class="stat"><b>69</b><span class="en">Fargate services defined</span><span class="es">servicios Fargate definidos</span></span>
+            <span class="stat"><b>2</b><span class="en">AWS regions</span><span class="es">regiones AWS</span></span>
+          </div>
+          <div class="stack">AWS CDK · ECS Fargate · ECR · ALB · API Gateway HTTP · VPC Link · KMS · Route 53</div>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="meta"><span class="sector"><span class="en">Credit unions · 8 orgs</span><span class="es">Cooperativas · 8 orgs</span></span><span class="mono" style="color:var(--muted)">2024 – 2025</span></div>
+        <div>
+          <h3><span class="en">Reusable landing zone for financial cooperatives</span><span class="es">Landing zone reutilizable para cooperativas financieras</span></h3>
+          <p class="ctx en">Several credit unions and a bank needed the same core-banking web stack, each in its own isolated account.</p>
+          <p class="ctx es">Varias cooperativas de ahorro y un banco necesitaban el mismo stack web de core bancario, cada uno en su cuenta aislada.</p>
+          <ul class="en">
+            <li>Turned one hand-built architecture into a template set for Dev, UAT and Prod that new clients deploy by changing parameters.</li>
+            <li>Separated application and database networks into two VPCs across three Availability Zones for regulated workloads.</li>
+            <li>Added IAM groups, private S3 buckets with bucket policies, and a KMS-encrypted DocumentDB cluster.</li>
+          </ul>
+          <ul class="es">
+            <li>Convertí una arquitectura hecha a mano en un set de plantillas Dev, UAT y Prod que un cliente nuevo despliega cambiando parámetros.</li>
+            <li>Separé las redes de aplicación y de base de datos en dos VPC sobre tres zonas de disponibilidad para cargas reguladas.</li>
+            <li>Agregué grupos IAM, buckets S3 privados con políticas y un clúster DocumentDB cifrado con KMS.</li>
+          </ul>
+          <div class="stats">
+            <span class="stat"><b>8</b><span class="en">organizations onboarded</span><span class="es">organizaciones desplegadas</span></span>
+            <span class="stat"><b>3</b>AZ</span>
+            <span class="stat"><b>2</b>VPC</span>
+          </div>
+          <div class="stack">CloudFormation · VPC · NAT Gateway · DocumentDB · ElastiCache · IAM · KMS</div>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="meta"><span class="sector"><span class="en">Insurtech SaaS</span><span class="es">SaaS Insurtech</span></span><span class="mono" style="color:var(--muted)">2025 – 2026</span><span class="mono" style="color:var(--teal)">AWS CDK</span></div>
+        <div>
+          <h3><span class="en">Insurance SaaS platform design</span><span class="es">Diseño de plataforma SaaS de seguros</span></h3>
+          <p class="ctx en">A platform with a back-office, an agent portal, online sales and a middleware that integrates with each insurer's core system.</p>
+          <p class="ctx es">Una plataforma con backoffice, portal de agentes, venta en línea y un middleware que se integra con el core de cada aseguradora.</p>
+          <ul class="en">
+            <li>Found that long synchronizations failed on API Gateway and ALB timeouts, and replaced them with an async pattern: API → job ID → SQS → ECS worker → status check.</li>
+            <li>Set recovery targets with backups every 3 hours plus daily, weekly and monthly retention on Multi-AZ RDS.</li>
+            <li>Designed an account model for SaaS, PaaS and licensing customers with least-privilege access.</li>
+            <li>Built it in CDK: online sales, agent portal and middleware on Fargate; RDS PostgreSQL 17 with Performance Insights and three rotated database users; a TLS-only Valkey cache; all data in an isolated VPC.</li>
+          </ul>
+          <ul class="es">
+            <li>Detecté que las sincronizaciones largas fallaban por timeouts de API Gateway y ALB, y las reemplacé con un patrón asíncrono: API → jobId → SQS → worker ECS → consulta de estado.</li>
+            <li>Definí objetivos de recuperación con respaldos cada 3 horas y retención diaria, semanal y mensual en RDS Multi-AZ.</li>
+            <li>Diseñé un modelo de cuentas para clientes SaaS, PaaS y licenciamiento con acceso de mínimo privilegio.</li>
+            <li>Lo construí en CDK: venta en línea, portal de agentes y middleware en Fargate; RDS PostgreSQL 17 con Performance Insights y tres usuarios de base rotados; caché Valkey solo con TLS; todos los datos en una VPC aislada.</li>
+          </ul>
+          <div class="stats">
+            <span class="stat"><b>RTO 4 h</b></span>
+            <span class="stat"><b>RPO 3 h</b></span>
+          </div>
+          <div class="stack">ECS Fargate · SQS · API Gateway · Lambda · RDS PostgreSQL 17 · ElastiCache Valkey · Secrets Manager · KMS · CDK</div>
+          <a class="repo" href="https://github.com/cfarez19/aws-cdk-ecs-postgres-platform"><span class="en">View the code on GitHub</span><span class="es">Ver el código en GitHub</span> → cfarez19/aws-cdk-ecs-postgres-platform</a>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="meta"><span class="sector"><span class="en">Security · all accounts</span><span class="es">Seguridad · todas las cuentas</span></span><span class="mono" style="color:var(--muted)">2024 – 2026</span></div>
+        <div>
+          <h3><span class="en">Security posture across client accounts</span><span class="es">Postura de seguridad en cuentas de clientes</span></h3>
+          <p class="ctx en">Continuous review and remediation across more than a dozen AWS accounts.</p>
+          <p class="ctx es">Revisión y remediación continua en más de una docena de cuentas AWS.</p>
+          <ul class="en">
+            <li>Tracked and fixed failed Security Hub controls, including public S3 access and key rotation.</li>
+            <li>Wrote WAF rules for rate limiting, IP allow lists and protected routes, and analyzed WAF logs with Athena.</li>
+            <li>Replaced static access keys in Bitbucket Pipelines with OIDC-assumed IAM roles.</li>
+            <li>A credit union's account produced 3,000+ Security Hub findings a day. To avoid alert fatigue I built a pipeline that groups them into batches of 100 every 30 minutes: EventBridge → Lambda → DynamoDB (TTL) → Lambda → SNS.</li>
+            <li>Automated reminders to rotate IAM access keys with Lambda and EventBridge.</li>
+          </ul>
+          <ul class="es">
+            <li>Seguí y corregí controles fallidos de Security Hub, incluido acceso público a S3 y rotación de claves.</li>
+            <li>Escribí reglas WAF de rate limiting, listas de IP y rutas protegidas, y analicé logs WAF con Athena.</li>
+            <li>Reemplacé access keys estáticas en Bitbucket Pipelines por roles IAM asumidos vía OIDC.</li>
+            <li>La cuenta de una cooperativa generaba más de 3.000 hallazgos diarios en Security Hub. Para evitar la saturación de alertas construí un flujo que los agrupa en lotes de 100 cada 30 minutos: EventBridge → Lambda → DynamoDB (TTL) → Lambda → SNS.</li>
+            <li>Automaticé recordatorios de rotación de access keys IAM con Lambda y EventBridge.</li>
+          </ul>
+          <div class="stats">
+            <span class="stat"><b>80–84%</b><span class="en">Security Hub controls passing</span><span class="es">controles Security Hub aprobados</span></span>
+            <span class="stat"><b>23/25</b>EC2 <span class="en">scanned</span><span class="es">escaneadas</span></span>
+            <span class="stat"><b>6/8</b>Lambda <span class="en">scanned</span><span class="es">escaneadas</span></span>
+            <span class="stat"><b>3,000+</b><span class="en">findings/day batched</span><span class="es">hallazgos/día agrupados</span></span>
+          </div>
+          <div class="stack">Security Hub · GuardDuty · Inspector · Detective · CloudTrail · Config · WAF · EventBridge · DynamoDB · SNS</div>
+        </div>
+      </article>
+
+      <article class="case">
+        <div class="meta"><span class="sector"><span class="en">Reference architecture</span><span class="es">Arquitectura de referencia</span></span><span class="mono" style="color:var(--muted)">AWS · 3 AZ</span></div>
+        <div>
+          <h3><span class="en">Cloud-native web platform on AWS, end to end</span><span class="es">Plataforma web cloud-native en AWS, de punta a punta</span></h3>
+          <p class="ctx en">The complete architecture I design and build for customer-facing web apps: static frontend, containerized backend, managed database and object storage, with security, backup and monitoring at every layer.</p>
+          <p class="ctx es">La arquitectura completa que diseño y construyo para aplicaciones web de clientes: frontend estático, backend en contenedores, base de datos administrada y almacenamiento de objetos, con seguridad, respaldo y monitoreo en cada capa.</p>
+          <ul class="en">
+            <li>Single entry point: Route 53 → WAF → CloudFront, with the frontend served from a private S3 bucket.</li>
+            <li>API Gateway with a Cognito JWT authorizer reaches the private network through a VPC Link and an internal ALB, so the backend is never public.</li>
+            <li>Backend on ECS Fargate with autoscaling across three AZs; RDS PostgreSQL Multi-AZ in a separate VPC over peering, encrypted with KMS and protected by AWS Backup plans.</li>
+            <li>Security Hub, GuardDuty, Inspector, CloudTrail and Config watch the whole account; CloudWatch covers infrastructure, data, network and cost metrics.</li>
+          </ul>
+          <ul class="es">
+            <li>Un solo punto de entrada: Route 53 → WAF → CloudFront, con el frontend servido desde un bucket S3 privado.</li>
+            <li>API Gateway con autorizador JWT de Cognito entra a la red privada por VPC Link y un ALB interno, así el backend nunca es público.</li>
+            <li>Backend en ECS Fargate con autoscaling en tres AZ; RDS PostgreSQL Multi-AZ en una VPC separada por peering, cifrado con KMS y con planes de AWS Backup.</li>
+            <li>Security Hub, GuardDuty, Inspector, CloudTrail y Config vigilan toda la cuenta; CloudWatch cubre métricas de infraestructura, datos, red y costos.</li>
+          </ul>
+          <figure style="margin:18px 0 0">
+            <div style="display:block;background:#fff;border:1px solid var(--line);border-radius:8px;overflow:hidden"><img src="arquitectura-cloud-native.png" alt="AWS architecture diagram: Route 53, WAF, CloudFront, S3 frontend, API Gateway with Cognito, VPC Link, internal ALB, ECS Fargate in three AZs, RDS Multi-AZ in a database VPC, AWS Backup and security tooling" style="display:block;width:100%;height:auto"></div>
+          </figure>
+          <div class="stack">Route 53 · WAF · CloudFront · S3 · Cognito · API Gateway · VPC Link · ECS Fargate · RDS Multi-AZ · KMS · AWS Backup</div>
+          <a class="repo" href="https://github.com/cfarez19/aws-cloud-native-reference-architecture"><span class="en">View the architecture on GitHub</span><span class="es">Ver la arquitectura en GitHub</span> → cfarez19/aws-cloud-native-reference-architecture</a>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- MORE WORK -->
+  <section id="more">
+    <div class="sec-head">
+      <span class="eyebrow"><span class="en">Range</span><span class="es">Alcance</span></span>
+      <div>
+        <h2><span class="en">More of what I've done on AWS</span><span class="es">Más de lo que he hecho en AWS</span></h2>
+        <p class="en">Networking, data, security, cost and automation work I deliver in production, each one documented as a repeatable runbook.</p>
+        <p class="es">Redes, datos, seguridad, costos y automatización que entrego en producción, cada uno documentado como un runbook repetible.</p>
+      </div>
+    </div>
+    <div class="services more">
+      <div class="svc">
+        <h3><span class="en">Serverless and AI automations</span><span class="es">Automatizaciones serverless e IA</span></h3>
+        <ul class="mini en"><li>WhatsApp and Telegram status notifications for an insurance back-office: API Gateway → Lambda → SNS → Lambda, switchable by environment.</li><li>Invoice data extraction from a phone photo: S3 trigger → Lambda → Textract, config in Parameter Store.</li><li>Image pre-processing for facial recognition with a custom OpenCV Lambda layer built in Docker.</li></ul>
+        <ul class="mini es"><li>Notificaciones de estado por WhatsApp y Telegram para un backoffice de seguros: API Gateway → Lambda → SNS → Lambda, configurable por ambiente.</li><li>Extracción de datos de facturas desde una foto: trigger S3 → Lambda → Textract, configuración en Parameter Store.</li><li>Preprocesamiento de imágenes para reconocimiento facial con una capa Lambda de OpenCV construida en Docker.</li></ul>
+        <div class="tags">Lambda · SNS · Textract · Rekognition · API Gateway · SAM</div>
+      </div>
+      <div class="svc">
+        <h3><span class="en">MongoDB and DocumentDB</span><span class="es">MongoDB y DocumentDB</span></h3>
+        <ul class="mini en"><li>Planned a partial move from MongoDB Atlas to DocumentDB 5.0, choosing which collections to migrate, plus upgrade paths for DocumentDB 4.0 → 5.0 and Atlas 5.0 → 6.0.</li><li>Role-based MongoDB users scoped to specific databases and collections, with a repeatable runbook.</li><li>Grew a production database from 150 to 165 GB before it filled (90% → 81% used) and planned moving history out.</li></ul>
+        <ul class="mini es"><li>Planifiqué una migración parcial de MongoDB Atlas a DocumentDB 5.0, eligiendo qué colecciones mover, y rutas de actualización de DocumentDB 4.0 → 5.0 y Atlas 5.0 → 6.0.</li><li>Usuarios MongoDB por rol, limitados a bases y colecciones específicas, con un runbook repetible.</li><li>Amplié una base productiva de 150 a 165 GB antes de llenarse (90% → 81% de uso) y planifiqué sacar los históricos.</li></ul>
+        <div class="tags">DocumentDB · MongoDB Atlas · Studio 3T · mongoimport</div>
+      </div>
+      <div class="svc">
+        <h3><span class="en">Multi-account governance</span><span class="es">Gobierno multi-cuenta</span></h3>
+        <ul class="mini en"><li>AWS Organizations and Control Tower for client accounts, with IAM Identity Center run from a delegated administrator account.</li><li>Account model by offering: Type A SaaS, Type B PaaS, Type C licensing.</li><li>MFA before any console action, no FullAccess policies without justification, OIDC roles for CI/CD.</li></ul>
+        <ul class="mini es"><li>AWS Organizations y Control Tower para cuentas de clientes, con IAM Identity Center administrado desde una cuenta delegada.</li><li>Modelo de cuentas por oferta: Tipo A SaaS, Tipo B PaaS, Tipo C licenciamiento.</li><li>MFA antes de cualquier acción en consola, sin políticas FullAccess sin justificación, roles OIDC para CI/CD.</li></ul>
+        <div class="tags">Control Tower · IAM Identity Center · Organizations · SCP · OIDC</div>
+      </div>
+      <div class="svc">
+        <h3><span class="en">Hybrid and private networking</span><span class="es">Redes híbridas y privadas</span></h3>
+        <ul class="mini en"><li>Site-to-Site VPNs with partners and on-premise systems, consolidated through a Transit Gateway with static routes.</li><li>Private database access with SSM port forwarding, ECS Exec and Twingate instead of public endpoints.</li><li>VPC Flow Logs, fixed egress IPs through NAT for partner allow lists, and quota planning for VPN and Elastic IPs.</li></ul>
+        <ul class="mini es"><li>VPN Site-to-Site con socios y sistemas on-premise, consolidadas con un Transit Gateway y rutas estáticas.</li><li>Acceso privado a bases de datos con SSM port forwarding, ECS Exec y Twingate en vez de endpoints públicos.</li><li>VPC Flow Logs, IPs de salida fijas por NAT para listas blancas de socios y planificación de cuotas de VPN e IPs elásticas.</li></ul>
+        <div class="tags">Site-to-Site VPN · Transit Gateway · SSM · Twingate · Flow Logs</div>
+      </div>
+      <div class="svc">
+        <h3><span class="en">Monitoring and resilience</span><span class="es">Monitoreo y resiliencia</span></h3>
+        <ul class="mini en"><li>CloudWatch alarms for environments, WAF, VPN, CloudFront and DocumentDB, routed through SNS to email and Slack.</li><li>Logs Insights queries, Contributor Insights and dashboards for production support.</li><li>Business continuity plan and an Availability Zone failure simulation to test recovery.</li></ul>
+        <ul class="mini es"><li>Alarmas CloudWatch para ambientes, WAF, VPN, CloudFront y DocumentDB, enviadas por SNS a correo y Slack.</li><li>Consultas Logs Insights, Contributor Insights y dashboards para soporte de producción.</li><li>Plan de continuidad de negocio y simulación de caída de una zona de disponibilidad para probar la recuperación.</li></ul>
+        <div class="tags">CloudWatch · SNS · Slack · Logs Insights · AWS Backup</div>
+      </div>
+      <div class="svc">
+        <h3><span class="en">Cost management</span><span class="es">Gestión de costos</span></h3>
+        <ul class="mini en"><li>Before/after cost scenarios for Fargate, Elastic Beanstalk and EC2 with growth buffers, ahead of each migration.</li><li>Savings Plans and Reserved Instances, cost allocation tags per client, and billing consolidation through a distributor.</li><li>Shut down duplicate infrastructure after migrations and right-sized databases (t3.large → m6g.large).</li></ul>
+        <ul class="mini es"><li>Escenarios de costo antes/después para Fargate, Elastic Beanstalk y EC2 con buffers de crecimiento, antes de cada migración.</li><li>Savings Plans e Instancias Reservadas, etiquetas de costo por cliente y consolidación de facturación con un distribuidor.</li><li>Apagué infraestructura duplicada tras las migraciones y ajusté el tamaño de bases (t3.large → m6g.large).</li></ul>
+        <div class="tags">Cost Explorer · Savings Plans · Reserved Instances · Pricing Calculator</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- OPEN SOURCE -->
+  <section id="code">
+    <div class="sec-head">
+      <span class="eyebrow"><span class="en">Code</span><span class="es">Código</span></span>
+      <div>
+        <h2><span class="en">Open-source infrastructure</span><span class="es">Infraestructura open source</span></h2>
+        <p class="en">Platforms I design and build, packaged as reusable CDK projects. Each one deploys from a JSON config and ships with tests.</p>
+        <p class="es">Plataformas que diseño y construyo, empaquetadas como proyectos CDK reutilizables. Cada una se despliega desde un JSON de configuración e incluye tests.</p>
+      </div>
+    </div>
+    <div class="repos">
+      <a class="repocard" href="https://github.com/cfarez19/aws-cloud-native-reference-architecture">
+        <span class="mono rc-path">cfarez19/aws-cloud-native-reference-architecture</span>
+        <b><span class="en">Cloud-native reference architecture</span><span class="es">Arquitectura de referencia cloud-native</span></b>
+        <span class="rc-desc en">CloudFront, WAF, Cognito, API Gateway over VPC Link, Fargate in 3 AZs, RDS Multi-AZ in its own VPC, with the reasoning behind each choice.</span>
+        <span class="rc-desc es">CloudFront, WAF, Cognito, API Gateway por VPC Link, Fargate en 3 AZ, RDS Multi-AZ en su propia VPC, con la justificación de cada decisión.</span>
+        <span class="mono rc-meta">draw.io · <span class="en">design doc</span><span class="es">documento de diseño</span></span>
+      </a>
+      <a class="repocard" href="https://github.com/cfarez19/aws-cdk-secure-platform">
+        <span class="mono rc-path">cfarez19/aws-cdk-secure-platform</span>
+        <b><span class="en">Security-first production platform</span><span class="es">Plataforma productiva con seguridad primero</span></b>
+        <span class="rc-desc en">ECS Fargate, DocumentDB, 4 WAF Web ACLs, HTTP API over VPC Link, S3 replication and AWS Backup to a second region.</span>
+        <span class="rc-desc es">ECS Fargate, DocumentDB, 4 Web ACL de WAF, HTTP API por VPC Link, replicación S3 y AWS Backup a una segunda región.</span>
+        <span class="mono rc-meta">14 stacks · ~200 <span class="en">resources</span><span class="es">recursos</span> · 7 tests</span>
+      </a>
+      <a class="repocard" href="https://github.com/cfarez19/aws-cdk-ecs-postgres-platform">
+        <span class="mono rc-path">cfarez19/aws-cdk-ecs-postgres-platform</span>
+        <b><span class="en">Containers + PostgreSQL + Valkey</span><span class="es">Contenedores + PostgreSQL + Valkey</span></b>
+        <span class="rc-desc en">Config-driven Fargate services, RDS PostgreSQL 17 with rotated users, TLS-only Valkey cache, isolated data VPC.</span>
+        <span class="rc-desc es">Servicios Fargate desde configuración, RDS PostgreSQL 17 con usuarios rotados, caché Valkey solo TLS, VPC de datos aislada.</span>
+        <span class="mono rc-meta">6 stacks · ~130 <span class="en">resources</span><span class="es">recursos</span> · 9 tests</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- IaC INVENTORY -->
+  <section id="iac">
+    <div class="sec-head">
+      <span class="eyebrow"><span class="en">Evidence</span><span class="es">Evidencia</span></span>
+      <div>
+        <h2><span class="en">What my templates actually build</span><span class="es">Lo que construyen mis plantillas</span></h2>
+        <p class="en">Resource counts across the CloudFormation templates I authored, by AWS resource type.</p>
+        <p class="es">Conteo de recursos en las plantillas CloudFormation que escribí, por tipo de recurso AWS.</p>
+      </div>
+    </div>
+    <div class="inv">
+      <div class="bars" id="bars"></div>
+      <div>
+        <div class="envs">
+          <div class="env"><div class="k">Development</div><div class="v">21</div><div class="d"><span class="en">stacks</span><span class="es">stacks</span></div></div>
+          <div class="env"><div class="k">UAT</div><div class="v">6</div><div class="d"><span class="en">stacks</span><span class="es">stacks</span></div></div>
+          <div class="env"><div class="k">Production</div><div class="v">13</div><div class="d"><span class="en">stacks</span><span class="es">stacks</span></div></div>
+          <div class="env"><div class="k">EB option sets</div><div class="v">13</div><div class="d"><span class="en">PHP 5.6 → 8 configs</span><span class="es">configs PHP 5.6 → 8</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="sec-head">
+      <span class="eyebrow"><span class="en">Experience</span><span class="es">Experiencia</span></span>
+      <div><h2><span class="en">Path</span><span class="es">Trayectoria</span></h2></div>
+    </div>
+    <ol class="tl">
+      <li><span class="when">2026 – now</span><div><h3>Cloud Engineer · Google Cloud</h3><p class="en">Multi-project GCP organization: cost optimization, GKE and Compute Engine, infrastructure with Terraform and GitHub.</p><p class="es">Organización GCP multi-proyecto: optimización de costos, GKE y Compute Engine, infraestructura con Terraform y GitHub.</p></div></li>
+      <li><span class="when">2024 – 2026</span><div><h3>Cloud Engineer / AWS Developer</h3><p class="en">Architecture, migrations, security and cost for financial and insurance clients.</p><p class="es">Arquitectura, migraciones, seguridad y costos para clientes financieros y de seguros.</p></div></li>
+      <li><span class="when">2020 – 2023</span><div><h3><span class="en">Technical Lead, financial vertical</span><span class="es">Líder Técnica, vertical financiera</span></h3><p class="en">Led the team building core-banking web apps for credit unions.</p><p class="es">Lideré el equipo de apps web de core bancario para cooperativas.</p></div></li>
+      <li><span class="when">2019 – 2020</span><div><h3>Software Developer</h3><p>PHP · Yii2 · APIs</p></div></li>
+    </ol>
+    <div class="certs">
+      <div class="cert"><b>AWS Certified Solutions Architect – Associate</b><span><span class="en">valid through 2027</span><span class="es">vigente hasta 2027</span></span></div>
+      <div class="cert"><b>AWS Certified Cloud Practitioner</b><span><span class="en">valid through 2027</span><span class="es">vigente hasta 2027</span></span></div>
+      <div class="cert"><b><span class="en">B.Eng. Systems &amp; Telematics</span><span class="es">Ing. en Sistemas y Telemática</span></b><span>Universidad del Azuay · 2020</span></div>
+    </div>
+  </section>
+
+  <section id="contact" style="border-top:0">
+    <div class="contact">
+      <div>
+        <h2><span class="en">Have an AWS project in mind?</span><span class="es">¿Tienes un proyecto en AWS?</span></h2>
+        <p class="en">Send me the current setup and the outcome you need. I reply with a scoped plan and an estimate.</p>
+        <p class="es">Cuéntame cómo está tu infraestructura y qué necesitas lograr. Te respondo con un plan acotado y una estimación.</p>
+      </div>
+      <ul>
+        <li>Upwork · Catalina Farez</li>
+        <li>GitHub · <a href="https://github.com/cfarez19" style="color:inherit">github.com/cfarez19</a></li>
+        <li>Get on Board · Torre</li>
+        <li><span class="en">Remote · Cuenca, Ecuador · UTC−5</span><span class="es">Remoto · Cuenca, Ecuador · UTC−5</span></li>
+      </ul>
+    </div>
+    <footer>© 2026 Catalina Farez</footer>
+  </section>
+</div>
+
+<script>
+(function(){
+  var data=[["ElasticBeanstalk::Environment",77],["EC2::Subnet",48],["EC2::RouteTable",20],["ElasticBeanstalk::Application",20],["ELBv2::TargetGroup",18],["ELBv2::LoadBalancer",16],["ELBv2::Listener",16],["S3::Bucket",13],["IAM::Group",13],["EC2::VPC",10],["EC2::NatGateway",8],["DocDB · ElastiCache · ECS · KMS",7]];
+  var max=77, el=document.getElementById('bars');
+  el.innerHTML=data.map(function(d){return '<div class="bar"><span class="lbl" title="AWS::'+d[0]+'">'+d[0]+'</span><span class="trk"><span class="fill" style="display:block;width:'+(d[1]/max*100).toFixed(1)+'%"></span></span><span class="n">'+d[1]+'</span></div>';}).join('');
+
+  var root=document.documentElement;
+  function set(l){root.setAttribute('data-lang',l);root.lang=l;
+    document.querySelectorAll('.lang button').forEach(function(b){b.setAttribute('aria-pressed',String(b.dataset.set===l));});
+    try{localStorage.setItem('cf-lang',l);}catch(e){}}
+  var saved=null; try{saved=localStorage.getItem('cf-lang');}catch(e){}
+  set(saved==='es'?'es':'en');
+  document.querySelectorAll('.lang button').forEach(function(b){b.addEventListener('click',function(){set(b.dataset.set);});});
+})();
+</script>
+</body>
+</html>
